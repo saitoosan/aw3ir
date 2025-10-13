@@ -1,0 +1,89 @@
+/* ----- Mise en page de base ----- */
+body {
+    background-color: #cfd7e4;
+    font-family: system-ui, -apple-system, "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    margin: 0 auto;
+    max-width: 500px;
+    padding: 16px;
+  }
+  
+  /* ----- Formulaire ----- */
+  form {
+    background: #fff; /* fond blanc */
+    border-radius: 16px; /* bord arrondi */
+    padding: 16px;
+    box-shadow: 0 2px 1px -1px #0003,
+                0 1px 1px #00000024,
+                0 1px 3px #0000001f;
+  }
+  
+  form p {
+    margin-bottom: 12px;
+  }
+  
+  /* Alignement label + input */
+  label {
+    width: 150px;
+    display: inline-block;
+    font-weight: 700;
+  }
+  
+  /* Champs de saisie */
+  input {
+    width: 250px;
+    padding: 6px 12px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+  
+  /* Icône ✔ / ✖ */
+  .icon-ok {
+    margin-left: 8px;
+  }
+  
+  /* ----- États de validation ----- */
+  
+  /* 2.1 Formulaire non valide → bouton grisé */
+  form:invalid input[type="submit"] {
+    background-color: gray;
+    border-color: gray;
+    color: #fff;
+    cursor: not-allowed;
+  }
+  
+  /* 2.2 Champ invalide → bordure rouge + cacher emoji */
+  input:invalid {
+    border-color: #dc3545;
+  }
+  input:invalid + .icon-ok {
+    display: none;
+  }
+  
+  /* 2.3 Champ valide → emoji visible + bordure verte */
+  input:valid {
+    border-color: #28a745;
+  }
+  input:valid + .icon-ok {
+    display: inline-block;
+    color: #28a745;
+  }
+  
+  /* ----- Bouton principal ----- */
+  .btn-primary,
+  input[type="submit"] {
+    border-radius: 5px;
+    padding: 6px 12px;
+    background-color: #0d6efd;
+    border: 1px solid #0d6efd;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .btn-primary:hover,
+  input[type="submit"]:hover {
+    filter: brightness(0.95);
+  }
+  
