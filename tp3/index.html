@@ -1,39 +1,104 @@
-<!doctype html>
-<html>
-
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>TP3</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TP AW - Formulaire</title>
 
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
+  <!-- Bootstrap local -->
+  <link rel="stylesheet" href="css/bootstrap.css" />
 
-    <style>
-        body {
-            background-color: #e9ebee;
-            font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-            font-size: 16px;
-            margin: 0 auto;
-            max-width: 800px;
-        }
-    </style>
-
-    <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
-    <!--<link rel="stylesheet" href="style.css">-->
-    <!--<script src="main.js"></script>-->
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .card {
+      border-radius: 15px;
+    }
+    .btn-primary {
+      border-radius: 25px;
+    }
+  </style>
 </head>
 
-<body>
-    <nav>
-        <a href="..">🏠 Index</a> / TP3
-    </nav>
-    <h1>tp3</h1>
-    <!-- Add your site or application content here -->
-    <p>Hello world! This is HTML5 Boilerplate.</p>
-    <img src="../galilee.png" alt="Logo Galilee" />
-</body>
+<body class="bg-light">
+  <div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card p-4 shadow-sm" style="width: 400px;">
+      <h2 class="card-title mb-3 text-center">TP AW</h2>
+      <p class="card-subtitle mb-4 text-muted text-center">Avec Bootstrap 5</p>
 
+      <form id="formulaire">
+        <div class="mb-3">
+          <label for="nom" class="form-label">Nom</label>
+          <input type="text" class="form-control" id="nom" placeholder="Entrez votre nom">
+        </div>
+        <div class="mb-3">
+          <label for="prenom" class="form-label">Prénom</label>
+          <input type="text" class="form-control" id="prenom" placeholder="Entrez votre prénom">
+        </div>
+        <div class="mb-3">
+          <label for="dateNaissance" class="form-label">Date de naissance</label>
+          <input type="date" class="form-control" id="dateNaissance">
+        </div>
+        <div class="mb-3">
+          <label for="adresse" class="form-label">Adresse postale</label>
+          <input type="text" class="form-control" id="adresse" placeholder="Entrez votre adresse">
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Adresse mail</label>
+          <input type="email" class="form-control" id="email" placeholder="exemple@mail.com">
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Valider</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal d'erreur -->
+  <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content border-danger">
+        <div class="modal-header bg-danger text-white">
+          <h5 class="modal-title" id="errorModalLabel">Erreur de validation</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Contenu ajouté par JS -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal carte -->
+  <div class="modal fade" id="mapModal" tabindex="-1" aria-labelledby="mapModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title" id="mapModalLabel">Votre localisation</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+        </div>
+        <div class="modal-body text-center">
+          <!-- Contenu ajouté par JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="js/bootstrap.bundle.js"></script>
+  <script src="js/form-validation.js"></script>
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
