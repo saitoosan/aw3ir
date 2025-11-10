@@ -1,39 +1,121 @@
-<!doctype html>
-<html>
-
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>TP4</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
-
-    <style>
-        body {
-            background-color: #e9ebee;
-            font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-            font-size: 16px;
-            margin: 0 auto;
-            max-width: 800px;
-        }
-    </style>
-
-    <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
-    <!--<link rel="stylesheet" href="style.css">-->
-    <!--<script src="main.js"></script>-->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>TP AW #4 — Formulaire</title>
+  <link rel="stylesheet" href="css/bootstrap.css"/>
+  <style>
+    .nb { color:#6c757d; white-space:nowrap; }
+    .form-row { display:flex; align-items:center; gap:.5rem; }
+    .map-wrapper img { max-width:100%; height:auto; border-radius:6px; margin-top:.5rem; }
+  </style>
 </head>
+<body class="bg-light">
+  <div class="container py-4">
+    <h3 class="mb-4">Ajouter un contact</h3>
 
-<body>
-    <nav>
-        <a href="..">🏠 Index</a> / TP4
-    </nav>
-    <h1>TP4</h1>
-    <!-- Add your site or application content here -->
-    <p>Hello world! This is HTML5 Boilerplate.</p>
-    <img src="../galilee.png" alt="Logo Galilee" />
+    <form id="formulaire" novalidate class="mb-3">
+      <!-- Nom -->
+      <div class="mb-3">
+        <div class="form-row">
+          <label for="nom" class="form-label mb-0" style="min-width:140px">Nom</label>
+          <input type="text" class="form-control" id="nom" onkeyup="calcNbChar(this.id)" />
+          <span class="nb" id="nb-nom">0 car.</span>
+        </div>
+      </div>
+
+      <!-- Prénom -->
+      <div class="mb-3">
+        <div class="form-row">
+          <label for="prenom" class="form-label mb-0" style="min-width:140px">Prénom</label>
+          <input type="text" class="form-control" id="prenom" onkeyup="calcNbChar(this.id)" />
+          <span class="nb" id="nb-prenom">0 car.</span>
+        </div>
+      </div>
+
+      <!-- Date -->
+      <div class="mb-3">
+        <div class="form-row">
+          <label for="dateNaissance" class="form-label mb-0" style="min-width:140px">Date de naissance</label>
+          <input type="date" class="form-control" id="dateNaissance" onkeyup="calcNbChar(this.id)" />
+          <span class="nb" id="nb-dateNaissance">0 car.</span>
+        </div>
+      </div>
+
+      <!-- Adresse + GPS + carte inline -->
+      <div class="mb-3">
+        <div class="form-row">
+          <label for="adresse" class="form-label mb-0" style="min-width:140px">Adresse</label>
+          <input type="text" class="form-control" id="adresse" onkeyup="calcNbChar(this.id)"/>
+          <button type="button" id="btnGPS" class="btn btn-warning">🔑 GPS</button>
+          <span class="nb" id="nb-adresse">0 car.</span>
+        </div>
+        <div id="map" class="map-wrapper"><!-- gps.js injecte l'image ici --></div>
+      </div>
+
+      <!-- Mail -->
+      <div class="mb-3">
+        <div class="form-row">
+          <label for="email" class="form-label mb-0" style="min-width:140px">Mail</label>
+          <input type="email" class="form-control" id="email" onkeyup="calcNbChar(this.id)"/>
+          <span class="nb" id="nb-email">0 car.</span>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Ajouter</button>
+    </form>
+
+    <!-- Alerte succès -->
+    <div id="success" class="alert alert-success d-none" role="alert">
+      Contact ajouté avec succès.
+    </div>
+
+    <hr/>
+    <div class="d-flex align-items-center gap-2 mb-2">
+      <h5 class="mb-0">Liste des contacts (<span id="count">0</span>)</h5>
+      <button type="button" id="btnReset" class="btn btn-sm btn-primary">Reset</button>
+    </div>
+
+    <!-- Tableau -->
+    <div class="table-responsive">
+      <table class="table table-striped align-middle mb-5">
+        <thead>
+          <tr>
+            <th>Nom</th><th>Prénom</th><th>Date de naissance</th><th>Adresse</th><th>Mail</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Modale d’erreur simple (si tu veux la garder) -->
+  <div class="modal fade" id="errorModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog"><div class="modal-content border-danger">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title">Erreur</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+      </div>
+      <div class="modal-body"></div>
+      <div class="modal-footer"><button type="button" class="btn btn-danger" data-bs-dismiss="modal">OK</button></div>
+    </div></div>
+  </div>
+
+  <!-- Scripts (ordre impératif) -->
+  <script src="js/bootstrap.bundlle.js"></script>
+  <script src="js/gps.js"></script>          <!-- fourni par le prof -->
+  <script src="js/store.js"></script>        <!-- fourni par le prof -->
+  <script src="js/form-validation.js"></script>
 </body>
-
 </html>
+
+
+
+
+
+
+
+
+
+
